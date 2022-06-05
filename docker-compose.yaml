@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  pdragonflydb:
+    container_name: pdragonflydb
+    image: docker.dragonflydb.io/dragonflydb/dragonfly
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6378:6379"  # Use 6378 port to avoid conflicts with redis
+    command:
+      [
+        "dragonfly",
+        "--logtostderr",
+        "--maxmemory=25769803776", # 307 MB
+        "--requirepass",
+        "${DRAGONFLYDB_PASSWORD}",
+      ]
+    ulimits:
+      memlock: -1
+    volumes:
+      - "pdragonflydb-data:/data"
+
+volumes:
+  pdragonflydb-data:
