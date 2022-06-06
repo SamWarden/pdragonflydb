@@ -13,7 +13,7 @@ services:
         "--logtostderr",
         "--maxmemory=25769803776", # 307 MB
         "--requirepass",
-        "${DRAGONFLYDB_PASSWORD}",
+        "${PDRAGONFLYDB_PASSWORD}",
       ]
     ulimits:
       memlock: -1
