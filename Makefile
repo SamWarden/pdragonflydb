@@ -4,7 +4,8 @@ help:
 
 .PHONY: up
 up: ## Start docker environment
-	docker-compose up
+	docker-compose up -d
+	docker-compose logs -f
 
 .PHONY: clean
 clean: ## Clean up docker container
